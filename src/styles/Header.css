@@ -34,6 +34,9 @@
     height: 120%;
     background-color: rgb(237, 237, 237);
     border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding: 0, 8px;
 }
 .MuiSvgIcon-root{
     color: rgb(82, 82, 82);
@@ -50,4 +53,9 @@
 .header__searchBar>input:focus{
     outline: none;
     color: black;
+}
+.header__icons{
+    display: flex;
+    align-items: center;
+    margin-right: -30px;
 }
