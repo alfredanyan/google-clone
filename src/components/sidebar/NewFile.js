@@ -1,9 +1,10 @@
 import React from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import '../../styles/NewFile.css'
+import {useState} from 'react'
 
+import firebase from 'firebase/compat/app';
 
-import firebase from 'firebase'
 import { storage, db } from '../../firebase'
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -51,7 +52,7 @@ const NewFile = () => {
 
     const handleUpload = () => {
         setUploading(true);
-        storage.ref(`files/${files.name}`).put(files).then(snapshot=>{
+        storage.ref(`files/${file.name}`).put(file).then(snapshot=>{
             console.log(snapshot);
             storage.ref('files').child(file.name).getDownloadURL().then(url => {
                 db.collection('myFiles').add({

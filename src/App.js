@@ -2,6 +2,7 @@ import {useState} from 'react'
 import './App.css';
 import Header from './components/header'
 import Sidebar from './components/sidebar'
+import FilesView from './components/filesView/FilesView'
 
 
 function App() {
@@ -19,7 +20,10 @@ function App() {
   return (
     <div className="App">
       <Header userPhoto={user.photoUrl} />
+      <div className="app__main">
       <Sidebar />
+      <FilesView />
+      </div>
       {/* <!-- auth true:
       - sidebar
       - filesView
