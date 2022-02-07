@@ -22,6 +22,7 @@
     color: gray;
     font-size: 20px;
     font-weight: 500;
+    margin-left: 15px;
 }
 .header__searchContainer{
     flex: 1;
@@ -39,6 +40,7 @@
     padding: 0, 8px;
 }
 .MuiSvgIcon-root{
+    font-size: 28px;
     color: rgb(82, 82, 82);
 }
 .header__searchBar>input{
@@ -58,4 +60,13 @@
     display: flex;
     align-items: center;
     margin-right: -30px;
+}
+
+.header__icons>span {
+    margin-right: 20px;
+}
+.header__icons>img {
+    object-fit: contain;
+    height: 100%;
+    border-radius: 50%;
 }
