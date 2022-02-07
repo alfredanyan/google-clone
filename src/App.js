@@ -1,29 +1,28 @@
-import {useState} from 'react'
-import './App.css';
-import Header from './components/header'
-import Sidebar from './components/sidebar'
-import FilesView from './components/filesView/FilesView'
-
+import { useState } from "react";
+import "./App.css";
+import Header from "./components/header";
+import Sidebar from "./components/sidebar";
+import FilesView from "./components/filesView/FilesView";
+import SideIcons from "./components/sideIcons";
 
 function App() {
-  const [user, setUser] = useState({
-    displayName: "Alfred Anyan",
-    email: "alfred.anyan@gmail.com",
-    emailVerified: true,
-    phoneNumber: null,
-    photoUrl: "./media/alfred.png"
-    // photoUrl: "https://drive.google.com/file/d/1rM4uObpyCO7Hj5nu0ICihLe3diPiOPvd/view?usp=sharing"
-  })
+  const [user, setUser] = useState();
   //authentication
-
 
   return (
     <div className="App">
-      <Header userPhoto={user.photoUrl} />
-      <div className="app__main">
-      <Sidebar />
-      <FilesView />
-      </div>
+      {user ? (
+        <>
+          <Header userPhoto={user.photoUrl} />
+          <div className="app__main">
+            <Sidebar />
+            <FilesView />
+            <SideIcons />
+          </div>
+        </>
+      ) : (
+        <div className="app__main"></div>
+      )}
       {/* <!-- auth true:
       - sidebar
       - filesView
