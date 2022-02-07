@@ -4,7 +4,7 @@ import Header from "./components/header";
 import Sidebar from "./components/sidebar";
 import FilesView from "./components/filesView/FilesView";
 import SideIcons from "./components/sideIcons";
-import Glogo from "../../media/google2.png";
+import Glogo from "./media/google2.png";
 import { auth, provider } from "./firebase";
 
 
