@@ -1,7 +1,7 @@
 import React from 'react';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
-const SidebarItem = () => {
+const SidebarItem = ({ arrow, icon, label }) => {
   return <div className="sidebarItem">
       <div className="sidebarItem__arrow">
           {arrow && (<ArrowRightIcon/>)}
