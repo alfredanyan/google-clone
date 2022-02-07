@@ -36,12 +36,65 @@ const NewFile = () => {
     const [file, setFile] = useState(null);
     const [uploading, setUploading] = useState(false)
 
+    const handleOpen = () => {
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    }
+
+    const handleChange = (e) =>{
+        if (e.target.files[0]) {
+            setFile(e.target.files[0])
+        }
+    }
+
+    const handleUpload = () => {
+        setUploading(true);
+        storage.ref(`files/${files.name}`).put(files).then(snapshot=>{
+            console.log(snapshot);
+            storage.ref('files').child(file.name).getDownloadURL().then(url => {
+                db.collection('myFiles').add({
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    caption: file.name,
+                    fileUrl: url,
+                    size: snapshot._delegate.bytesTransferred,
+                })
+                setUploading(false);
+                setOpen(false);
+                setFile(null);
+            })
+        })
+    }
+
     return (
         <div className="newFile">
-            <div className="newfile__container">
+            <div className="newfile__container" onClick={handleOpen}>
                 <AddIcon />
                 <p>New</p>
             </div>
+        <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby = "simple-modal-title"
+            aria-describedby="simple-modal-description"
+            >
+                <div style={modalStyle} className={classes.paper}>
+                    <p>Select files you want to upload</p>
+                    {
+                        uploading ? (
+                            <p>Uploading...</p>
+
+                        ) : (
+                            <>
+                                <input type="file" onChange={handleChange} />
+                                <button onClick={handleUpload}>Upload</button>
+                            
+                            </>
+                        )
+                    }
+                </div>
+            </Modal>
         </div>
     )
 }
